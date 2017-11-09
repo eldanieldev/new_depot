@@ -1,31 +1,26 @@
-<p id="notice" class="w3-panel"><%= notice %></p>
+<% if notice %><p class="w3-panel"id="notice"><%= notice %></p><% end %>
 
 <div class="w3-panel w3-aqua">
 
-<table class="w3-table-all">
-<thead>
-  <tr>
-    <th><h1>cart</h1></th>
-    <th></th>
-  </tr>
-</thead>
-<tbody>
-  
-<% @cart.line_items.each do |item| %>  
-<tr>
-  <td><%= item.product.title %></td>
-  <td><%= item.product.price %></td>
-</tr>
-<% end %>
+<div>Shopping Cart <%= @cart.id %> Contents</div>
 
-<tr>
-<td>
-<%= link_to 'Edit', edit_cart_path(@cart) ,class:"w3-button w3-light-gray w3-border" %> 
-</td>
-<td>
-<%= link_to 'Back', carts_path , class:"w3-button w3-light-gray w3-border" %>
-</td>
-</tr>
-</tbody>
-</table>
+<div>
+ <table class="w3-table-all">
+    
+    <% @cart.line_items.each do |item| %>
+    <tr>
+    <td><%= item.quantity %> &times; </td><td><%= item.product.title %></td>
+    </tr>
+    <% end %>
+
+ </table>
 </div>
+
+<div>
+
+<%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } , class:"w3-button w3-light-gray w3-border" %>
+<!--
+<%= link_to 'Edit', edit_cart_path(@cart) , class:"w3-button w3-light-gray w3-border" %> |
+<%= link_to 'Back', carts_path , class:"w3-button w3-light-gray w3-border" %>
+-->
+<%= link_to 'Keep Shopping', store_index_url , class:"w3-button w3-light-gray w3-border" %>
