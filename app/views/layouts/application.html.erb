@@ -8,7 +8,21 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class='<%= controller.controller_name %>'>
-    <%= yield %>
+  <body class="w3-container">
+    
+    <div class="w3-bar w3-light-grey">
+      <a href="/" class="w3-bar-item w3-button"><%= image_tag 'logo.svg', alt: 'Logo', height: '28', width: '28', style: 'display: block; margin-left: auto; margin-right: auto; margin-bottom: none; margin-top: none' %></a>
+      <a href="/" class="w3-bar-item w3-button">Catalog</button>
+      
+      <a href="/orders" class="w3-bar-item w3-button">Your Orders</a>
+    
+      <a href="/products" class="w3-bar-item w3-button">Products</a>
+      <a href="/users" class="w3-bar-item w3-button">Users</a>
+    </div>
+    
+    <div class="w3-container">
+      <%= yield %>
+    </div>
+  
   </body>
 </html>
